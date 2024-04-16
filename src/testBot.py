@@ -4,10 +4,6 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-load_dotenv() # loads the .env file so it can now be accessed with os.getenv("var_name")
-
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 
 class BizBot(commands.Bot):
@@ -19,7 +15,6 @@ class BizBot(commands.Bot):
         print(f'{self.user.name} has connected.')
         await self.change_presence(activity=discord.Game("Hollow Knight: Silksong"))
 
-def start_bot():
-    print(BOT_TOKEN)
+def start_bot(BOT_TOKEN):
     biz_bot = BizBot()
     biz_bot.run(BOT_TOKEN)
