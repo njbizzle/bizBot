@@ -7,4 +7,4 @@ load_dotenv.load_dotenv(ENV_PATH)
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-testBot.start_bot(BOT_TOKEN)
+#testBot.start_bot(BOT_TOKEN)
