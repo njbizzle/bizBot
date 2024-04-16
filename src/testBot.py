@@ -1,4 +1,3 @@
-# starts the bot
 import os, random
 
 import discord
@@ -11,7 +10,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 
-class YeetBot(commands.Bot):
+class BizBot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.all()  # gives the bot total control over everything i think
         super().__init__(command_prefix='!', intents=intents)
@@ -20,5 +19,7 @@ class YeetBot(commands.Bot):
         print(f'{self.user.name} has connected.')
         await self.change_presence(activity=discord.Game("Hollow Knight: Silksong"))
 
-yeet_bot = YeetBot()
-yeet_bot.run(BOT_TOKEN)
+
+def start_bot():
+    biz_bot = BizBot()
+    biz_bot.run(BOT_TOKEN)
