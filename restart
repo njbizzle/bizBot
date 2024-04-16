@@ -1,5 +1,5 @@
 git add --all
 git commit -m $0
-git push origin main push
+git push origin main
 
 ssh nmurphy@76.103.182.109 "cd bizBot; ls -a; git pull origin main; pip install -r requirements.txt; python src/main.py; exit;"
