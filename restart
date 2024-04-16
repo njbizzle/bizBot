@@ -1,4 +1,4 @@
-pip freeze -> requirement.txt
+]pip freeze -> requirements.txt
 
 git add --all
 git commit -m $0
