@@ -19,7 +19,7 @@ class BizBot(commands.Bot):
         print(f'{self.user.name} has connected.')
         await self.change_presence(activity=discord.Game("Hollow Knight: Silksong"))
 
-
 def start_bot():
+    print(BOT_TOKEN)
     biz_bot = BizBot()
     biz_bot.run(BOT_TOKEN)
