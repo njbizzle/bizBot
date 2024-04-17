@@ -15,6 +15,11 @@ class BizBot(commands.Bot):
         print(f'{self.user.name} has connected.')
         await self.change_presence(activity=discord.Game("Hollow Knight: Silksong"))
 
+    @commands.command(name="test")
+    async def role_set_choose(self, context: commands.Context, *args):
+        await context.send("test")
+
+
 def start_bot(BOT_TOKEN):
     biz_bot = BizBot()
     biz_bot.run(BOT_TOKEN)
