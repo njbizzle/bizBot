@@ -3,17 +3,13 @@ import discord
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(
-
-)
-
 class BizBot(discord.Client):
 
     async def on_ready(self):
-        print(f'We have logged in as {client.user}')
+        print(f'We have logged in as {self.user}')
 
     async def on_message(self, message):
-        if message.author == client.user:
+        if message.author == self.user:
             return
 
         if message.content.startswith("yo"):
