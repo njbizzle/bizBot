@@ -22,6 +22,7 @@ class Bot(discord.Client):
             await message.channel.send("Hello!")
 
     async def on_message_delete(self, message: discord.Message):
+        print("test")
         await message.channel.send(
             f"\"{message.content}\" - {message.author.name}"
         )
