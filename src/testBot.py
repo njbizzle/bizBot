@@ -4,7 +4,6 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 class BizBot(discord.Client):
-
     async def on_ready(self):
         print(f'We have logged in as {self.user}')
 
@@ -22,4 +21,4 @@ class BizBot(discord.Client):
 
 
 def start_bot(token: str):
-    client.run(token)
+    BizBot().run(token)
