@@ -16,7 +16,7 @@ class BizBot(commands.Bot):
         await self.change_presence(activity=discord.Game("Holow Knight: Silksong"))
 
     @commands.command(name="test")
-    async def role_set_choose(self, context: commands.Context, *args):
+    async def test(self, context: commands.Context, *args):
         await context.send("test")
 
 
