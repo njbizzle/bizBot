@@ -27,8 +27,8 @@ class Bot(discord.Client):
         )
 
     async def on_reaction_add(self, message: discord.Message, reaction: discord.Reaction):
+        print(reaction)
         for reaction_role in self.reaction_roles:
-            print(reaction)
             if reaction_role.message != message:
                 continue
             if reaction_role.reaction != reaction:
