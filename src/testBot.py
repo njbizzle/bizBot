@@ -21,4 +21,4 @@ class BizBot(discord.Client):
 
 
 def start_bot(token: str):
-    BizBot(intents=discord.Intents.all()).run(token)
+    BizBot(intents=intents).run(token)
