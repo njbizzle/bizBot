@@ -13,7 +13,7 @@ class BizBot(commands.Bot):
 
     async def on_ready(self):
         print(f'{self.user.name} has connected.')
-        await self.change_presence(activity=discord.Game("Hollow Knight: Silksong_"))
+        await self.change_presence(activity=discord.Game("Holow Knight: Silksong"))
 
     @commands.command(name="test")
     async def role_set_choose(self, context: commands.Context, *args):
