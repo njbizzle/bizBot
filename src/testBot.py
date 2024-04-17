@@ -1,25 +1,14 @@
-import os, random
+import discord, os
 
-import discord
-from discord.ext import commands
-from dotenv import load_dotenv
-
-
-
-class BizBot(commands.Bot):
-    def __init__(self):
-        intents = discord.Intents.all()  # gives the bot total control over everything i think
-        super().__init__(command_prefix='!', intents=intents)
-
+class MyClient(discord.Client):
     async def on_ready(self):
-        print(f'{self.user.name} has connected.')
-        await self.change_presence(activity=discord.Game("test 1"))
+        print(f'Logged on as {self.user}!')
 
-    @commands.command(name="test")
-    async def test(self, context: commands.Context, *args):
-        await context.send("test")
+    async def on_message(self, message):
+        print(f'Message from {message.author}: {message.content}')
 
+intents = discord.Intents.default()
+intents.message_content = True
 
-def start_bot(BOT_TOKEN):
-    biz_bot = BizBot()
-    biz_bot.run(BOT_TOKEN)
+client = MyClient(intents=intents)
+client.run(os.getenv("BOT_TOKEN"))
