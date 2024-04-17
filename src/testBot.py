@@ -8,7 +8,7 @@ client = discord.Client(
     status=discord.Status.dnd,
     activity=discord.CustomActivity(
         name="test",
-        emoji=discord.PartialEmoji.from_str(":skull:")
+        emoji=discord.PartialEmoji(name="<:duckysleep:1059974724588945479>")
     )
 )
 
