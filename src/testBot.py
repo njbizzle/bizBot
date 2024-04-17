@@ -3,7 +3,14 @@ import discord
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(intents=intents, status=discord.Status.dnd, activity=discord.Game("test"))
+client = discord.Client(
+    intents=intents,
+    status=discord.Status.dnd,
+    activity=discord.CustomActivity(
+        name="test",
+        emoji=discord.PartialEmoji.from_str(":skull:")
+    )
+)
 
 @client.event
 async def on_ready():
