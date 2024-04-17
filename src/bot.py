@@ -7,30 +7,35 @@ intents.message_content = True
 
 
 class Bot(discord.Client):
-    async def on_ready(self):
-        print(f'We have logged in as {self.user}')
+    def __init__(self, intents: discord.Intents):
+        super().__init__(intents=intents)
 
         self.reaction_roles = [
 
         ]
+
+    async def on_ready(self):
+        print(f'We have logged in as {self.user}')
+
 
     async def on_message(self, message):
         if message.author == self.user:
             return
 
         if message.content.startswith("yo"):
-            await message.channel.send("Hello!")
+            await message.channel.send("hi")
 
     async def on_message_delete(self, message: discord.Message):
-        print("test")
         await message.channel.send(
             f"\"{message.content}\" - {message.author.name}"
         )
 
-    async def on_reaction_add(self, message: discord.Message, reaction: discord.Reaction):
-        print(reaction)
+    async def on_reaction_add(self, reaction: discord.Reaction, user: discord.User):
+        if type(reaction.emoji) == discord.PartialEmoji or type(reaction.emoji) == discord.Emoji:
+            reaction = reaction.name
+        print(reaction.emoji)
         for reaction_role in self.reaction_roles:
-            if reaction_role.message != message:
+            if reaction_role.message != reaction.message:
                 continue
             if reaction_role.reaction != reaction:
                 continue
