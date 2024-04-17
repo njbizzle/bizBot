@@ -3,7 +3,7 @@ import discord
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(intents=intents, status=discord.Status.dnd, activity=None)
+client = discord.Client(intents=intents, status=discord.Status.dnd, activity=discord.Game("test"))
 
 @client.event
 async def on_ready():
