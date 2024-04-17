@@ -13,7 +13,7 @@ class BizBot(commands.Bot):
 
     async def on_ready(self):
         print(f'{self.user.name} has connected.')
-        await self.change_presence(activity=discord.Game("Holow Knight: Silksong"))
+        await self.change_presence(activity=discord.Game("test 1"))
 
     @commands.command(name="test")
     async def test(self, context: commands.Context, *args):
