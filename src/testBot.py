@@ -1,9 +1,4 @@
-import discord, os, load_dotenv
-
-APP_ROOT = os.path.join(os.path.dirname(__file__))
-ENV_PATH = str(APP_ROOT.split("src", 1)[0]) + ".env"
-
-load_dotenv.load_dotenv(ENV_PATH)
+import discord
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -19,8 +14,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith("yo"):
+        await message.channel.send("Hello!")
 
 
 def start_bot(token: str):
