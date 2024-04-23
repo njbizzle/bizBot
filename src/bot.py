@@ -11,7 +11,7 @@ class Bot(discord.Client):
         super().__init__(intents=intents)
 
         self.reaction_roles = [
-
+            ReactionRole(self)
         ]
 
     async def on_ready(self):
@@ -30,17 +30,36 @@ class Bot(discord.Client):
             f"\"{message.content}\" - {message.author.name}"
         )
 
-    async def on_reaction_add(self, reaction: discord.Reaction, user: discord.User):
-        if type(reaction.emoji) == discord.PartialEmoji or type(reaction.emoji) == discord.Emoji:
-            reaction = reaction.name
-        print(reaction.emoji)
+    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
+        reaction_id = payload.emoji.id if payload.emoji.id else payload.emoji.name
+        message_id = payload.message_id
+
         for reaction_role in self.reaction_roles:
-            if reaction_role.message != reaction.message:
+            if reaction_role.message_id != message_id:
                 continue
-            if reaction_role.reaction != reaction:
+            if reaction_role.reaction_id != reaction_id:
                 continue
 
-            print("reacted")
+            await payload.member.remove_roles(
+                self.get_guild(payload.guild_id).get_role(reaction_role.role_id)
+            )
+            continue
+
+    async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
+        reaction_id = payload.emoji.id if payload.emoji.id else payload.emoji.name
+        message_id = payload.message_id
+
+        for reaction_role in self.reaction_roles:
+            if reaction_role.message_id != message_id:
+                continue
+            if reaction_role.reaction_id != reaction_id:
+                continue
+
+            await payload.member.remove_roles(
+                self.get_guild(payload.guild_id).get_role(reaction_role.role_id)
+            )
+
+            continue
 
 
 def start_bot(token: str):
