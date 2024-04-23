@@ -10,13 +10,10 @@ class Bot(discord.Client):
     def __init__(self, intents: discord.Intents):
         super().__init__(intents=intents)
 
-        self.reaction_roles = [
-            ReactionRole(self)
-        ]
+        self.reaction_roles = []
 
     async def on_ready(self):
         print(f'We have logged in as {self.user}')
-
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -24,7 +21,7 @@ class Bot(discord.Client):
 
         if message.content.startswith("yo"):
             await message.channel.send("hi")
-
+            
     async def on_message_delete(self, message: discord.Message):
         await message.channel.send(
             f"\"{message.content}\" - {message.author.name}"
