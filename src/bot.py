@@ -20,8 +20,8 @@ class Bot(discord.Client):
             return
 
         if message.content.startswith("yo"):
-            await message.channel.send("hi")
-            
+            await message.channel.send("test test")
+
     async def on_message_delete(self, message: discord.Message):
         await message.channel.send(
             f"\"{message.content}\" - {message.author.name}"
