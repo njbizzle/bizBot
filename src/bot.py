@@ -2,10 +2,6 @@ import discord
 
 from reaction_role import ReactionRole
 
-intents = discord.Intents.default()
-intents.message_content = True
-
-
 class Bot(discord.Client):
     def __init__(self, intents: discord.Intents):
         super().__init__(intents=intents)
@@ -60,4 +56,7 @@ class Bot(discord.Client):
 
 
 def start_bot(token: str):
+    intents = discord.Intents.default()
+    intents.message_content = True
+
     Bot(intents=intents).run(token)
